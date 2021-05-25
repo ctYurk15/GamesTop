@@ -18,9 +18,8 @@ Route::get('/', function () {
     return view('main.main');
 })->name('main');
 
-Route::get('/catalog', function () {
-    return view('main.catalog');
-})->name('catalog');
+Route::get('/catalog', 'App\Http\Controllers\CatalogController@index')->name('catalog');
+Route::get('/gamepage/{id}', 'App\Http\Controllers\GamePageController@show')->name('gamepage');
 
 Route::get('/account', function () {
     return view('main.account');

@@ -12,6 +12,7 @@
     <link rel='stylesheet' href='/css/trystyle.css'>
     <link rel='stylesheet' href='/css/footer.css'>
     <link href='https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,300&display=swap' rel='stylesheet'>
+    @yield('custom_css')
 </head>
 <body>
     
@@ -26,12 +27,30 @@
                     <li>
                        <a href="{{route('catalog')}}"> Каталог </a>
                     </li>
-                    <li>
-                        <a href="{{route('account')}}"> Аккаунт </a>
-                       </li>
-                    <li>
-                        <a href="{{route('goods')}}"> Корзина </a>
-                    </li>
+                    @if (Route::has('login'))
+                        @auth
+                            <li>
+                                <a href="{{route('account')}}"> Аккаунт </a>
+                            </li>
+                            <li>
+                                <a href="{{route('goods')}}"> Корзина </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+                            </li>
+
+                            @if (Route::has('register'))
+                                <li>
+                                   <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                                </li>
+
+                            @endif
+                        @endauth
+                    @endif
                 </ul>
                     <div class="burger">
                     <div class="line1"></div>
