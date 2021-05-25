@@ -1,0 +1,174 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-color: black;
+    color: white;
+}
+
+.left-img 
+{
+    text-align: left;
+}
+nav 
+{
+    /*display: flex;*/
+    justify-content: left;
+    align-items: center;
+    min-height: 25vh;
+    background-color: gray;
+    border: 2px solid black;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.logo {
+    color: rgb(211, 211, 211);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 20;
+}
+
+.nav-links{
+    color: rgb(211, 211, 211);
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+}
+
+.nav-links li{
+    list-style: none;
+    border: 3px solid black;
+    border-radius: 7px;
+    padding: 3px;
+    margin-top: 6%;
+    background-color: #3f3f3f;
+}
+
+.nav-links li:hover{
+    list-style: none;
+    border: 3px solid yellow;
+    border-radius: 7px;
+    padding: 3px;
+    margin-top: 6%;
+    background-color: #3f3f3f;
+}
+
+.nav-links a{
+    color: rgb(231, 231, 231);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.burger{
+    background-color: #3f3f3f;
+    float: right;
+    display: none;
+    cursor: pointer;
+    border: 3px solid black;
+    border-radius: 7px;
+}
+
+.burger div{
+    width: 25px;
+    height: 3px;
+    background-color: rgb(211, 211, 211);
+    margin: 5px;
+}
+
+
+@media screen and (max-width: 1024px){
+    .nav-links{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 768px){
+    body{
+        overflow-x: hidden;
+    }
+    .nav-links{
+        position: absolute;
+        right: 0px;
+        height: 92vh;
+        top: 25vh;
+        background-color:gray;;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+    .nav-links li{
+        opacity: 1;
+    }
+    .burger{
+    display: block;
+    }
+}
+
+.nav-active{
+    transform: translateX(0%);
+}
+
+@keyframes navLinkfade{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+
+.searchform
+{
+    /*position: relative;
+    top: 1%;
+    left: 80%;*/
+    float: right;
+    height: 25px;
+    /*background-color: green;
+    border: 3px solid yellow;*/
+    padding: 2px;
+}
+
+input
+{
+    border-radius: 10px;
+    border: 3px solid black;
+    padding: 2px;
+}
+
+/* Відповідає за хєдер та з верху з li до тесту*/
+input:hover
+{
+    border-radius: 10px;
+    border: 3px solid yellow;
+}
+
+.divform
+{
+    margin-left: auto;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-bottom: 15px;
+    width: 98%;
+    height: 70px;
+    background-color: #3f3f3f;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 1%;
+    position: relative;
+    top: 70%;
+}

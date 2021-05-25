@@ -13,9 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//main routes
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('main.main');
+})->name('main');
+
+Route::get('/catalog', function () {
+    return view('main.catalog');
+})->name('catalog');
+
+Route::get('/account', function () {
+    return view('main.account');
+})->name('account');
+
+Route::get('/goods', function () {
+    return view('main.goods');
+})->name('goods');
+
+Route::get('/test', 'App\Http\Controllers\TestController@allGames');
 
 Auth::routes();
 
