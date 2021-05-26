@@ -19,7 +19,7 @@ Route::get('/', function () {
 })->name('main');
 
 Route::get('/catalog', 'App\Http\Controllers\CatalogController@index')->name('catalog');
-Route::get('/gamepage/{id}', 'App\Http\Controllers\GamePageController@show')->name('gamepage');
+Route::get('/gamepage/{catalog}', 'App\Http\Controllers\GamePageController@show')->name('gamepage');
 
 Route::get('/goods', function () {
     return view('main.goods');
