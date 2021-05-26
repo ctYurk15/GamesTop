@@ -21,10 +21,6 @@ Route::get('/', function () {
 Route::get('/catalog', 'App\Http\Controllers\CatalogController@index')->name('catalog');
 Route::get('/gamepage/{id}', 'App\Http\Controllers\GamePageController@show')->name('gamepage');
 
-Route::get('/account', function () {
-    return view('main.account');
-})->name('account');
-
 Route::get('/goods', function () {
     return view('main.goods');
 })->name('goods');

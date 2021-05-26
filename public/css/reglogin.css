@@ -1,0 +1,44 @@
+/*Registration forms*/
+
+.rf_input
+{
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.rf_input_field
+{
+    width: 65%;
+}
+
+.rf_button
+{
+    font-size: 15px;
+    width: 60%;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: dimgray;
+    margin: 10px;
+}
+
+.rf_input:hover
+{
+    border: 2px solid yellow;
+}
+
+.rf_button:hover
+{
+    border: 2px solid yellow;
+}
+
+.regform
+{
+    width: 20%;
+    background-color: silver;
+    border: 2px solid black;
+    border-radius: 5px;
+    left: 40%;
+    top: 30%;
+    font-size: 20px;
+    color: black;
+}

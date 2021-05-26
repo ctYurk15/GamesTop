@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Каталог')
+@section('title',  __('Catalog'))
 
 @section('custom_css')
 <link href="/css/catalog.css" rel='stylesheet'>
@@ -11,7 +11,7 @@
 <main class='content'>
     <div class="checkboxdiv">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <span class="j_title">Жанри</span>
+        <span class="j_title">{{__('Categories')}}</span>
 
         <span class="bigcheck">
           <label class="bigcheck">
@@ -94,12 +94,12 @@
           </span>
 
           <span class="j_title">Сортування</span><br>
-          <select class="src">
-            <option value="#" selected>За популярністю</option>
-            <option value="#">Від дешевих до дорогих</option>
-            <option value="#">Від дорогих до дешевих</option>
-            <option value="#">За датою виходу</option>
-            <option value="#">За алфавітом</option>
+        <select class="src" id='sortingSelect'>
+            <option value="popularity" selected>By popularity</option>
+            <option value="price-low-high">By price from low to high</option>
+            <option value="price-high-low">By price from high to low</option>
+            <option value="name-a-z">By name A-Z</option>
+            <option value="name-z-a">By name Z-A</option>
         </select><br>
 
         <span class="j_title">Ціна до, грн</span><br>
@@ -112,6 +112,7 @@
                 <input type="text" placeholder="2000" class="form-control form-control-max">
             </div>
         </div>
+        <button id='sortButton' data-route="{{route('catalog')}}">Sort</button>
     </div>
 
 
@@ -139,4 +140,9 @@
     </ul>
 </main>
 
+@endsection
+
+
+@section('custom_js')
+<script src='/js/sortCatalog.js'></script>
 @endsection

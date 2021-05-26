@@ -7,9 +7,39 @@ use App\Models\Game;
 
 class CatalogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $games = Game::all();
+        
+        //sorting
+        if(isset($request->orderBy))
+        {
+            if($request->orderBy == "name-a-z")
+            {
+                $games = Game::orderBy("name")->get();
+            }
+            if($request->orderBy == "name-z-a")
+            {
+                $games = Game::orderBy("name", "DESC")->get();
+            }
+            if($request->orderBy == "price-low-high")
+            {
+                $games = Game::orderBy("price")->get();
+            }
+            if($request->orderBy == "price-high-low")
+            {
+                $games = Game::orderBy("price", "DESC")->get();
+            }
+        }
+        
+        //sending all games at once
+        if($request->ajax())
+        {
+            return view('main.ajax.sorted-games', [
+                'games' => $games
+            ])->render();
+        }
+        
         return view('main.catalog', [
             'games' => $games
         ]);

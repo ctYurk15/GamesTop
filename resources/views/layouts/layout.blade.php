@@ -8,11 +8,12 @@
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
     <link rel='preconnect' href='https://fonts.gstatic.com'>
     <title>GamesTop - @yield('title')</title>
-    <link rel='icon' href='images/siteIcon.png' type='image/x-icon'>
+    <!--<link rel='icon' href='images/siteIcon.png' type='image/x-icon'> -->
     <link rel='stylesheet' href='/css/trystyle.css'>
     <link rel='stylesheet' href='/css/footer.css'>
     <link href='https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,300&display=swap' rel='stylesheet'>
     @yield('custom_css')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     
@@ -22,21 +23,18 @@
             <nav>
                 <ul class="nav-links">
                     <li>
-                        <a href="{{route('main')}}"> Головна </a>
+                        <a href="{{route('main')}}"> Main </a>
                     </li>
                     <li>
-                       <a href="{{route('catalog')}}"> Каталог </a>
+                       <a href="{{route('catalog')}}"> Catalog </a>
                     </li>
                     @if (Route::has('login'))
                         @auth
                             <li>
-                                <a href="{{route('account')}}"> Аккаунт </a>
+                                <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">{{ __('Home') }}</a>
                             </li>
                             <li>
-                                <a href="{{route('goods')}}"> Корзина </a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
+                                <a href="{{route('goods')}}"> Goods </a>
                             </li>
                         @else
                             <li>
@@ -57,7 +55,7 @@
                     <div class="line2"></div>
                     <div class="line3"></div>
                 </div>
-                <script src="app.js"></script><br>
+                <script src="/js/app1.js"></script><br>
                 <div class = "divform">
                         <img src="/images/Mylogo.png"  width="150px" height="40px" alt="Games Top" class="left-img" />
                         <form class = "searchform">
@@ -109,6 +107,6 @@
         </footer>
     </div>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
-    <script src='/js/main.js'></script>
+    @yield('custom_js')
 </body>
 </html>  
