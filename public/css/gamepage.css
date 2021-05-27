@@ -1,3 +1,19 @@
+#buyButton
+{
+    border: 2px solid black;
+    border-radius: 7px;
+    background-color: dimgray;
+    font-size: 20px;
+    color: white;
+    width: 30%;
+}
+
+#buyButton:hover
+{
+    border: 2px solid yellow;
+    cursor: pointer;
+}
+
 #parent {
     display: flex;
     width: 100%;

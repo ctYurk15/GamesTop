@@ -4,14 +4,24 @@ $('document').ready(function(){
     $("#sortButton").on("click", function(){
         var select = $("#sortingSelect");
         
-        var orderBy = select.val();
+        var orderBy = select.val(); //how to sort games
+        
+        var categories = []; //which categories user selected
+        $(".category").each(function(index){
+            if($(this).prop("checked")) //if we selected the checkbox
+            {
+                categories.push($(this).attr('name'));
+            }
+        });
+        
         var url = ""+$(this).attr("data-route");
         
         $.ajax({
             url: url,
             type: "GET",
             data: {
-                orderBy: orderBy
+                orderBy: orderBy,
+                categories: categories
             },
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -25,6 +35,9 @@ $('document').ready(function(){
                 let newUrl = url + '?';
                 newUrl += 'orderBy='+orderBy;
                 history.pushState({}, '', newUrl);
+            },
+            error: function(error) {
+                console.log(error);
             }
         });
     });

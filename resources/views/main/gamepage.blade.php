@@ -17,14 +17,10 @@
             <div id="lowerDiv">
                 <div class = "text1">
                     <h1><big>{{$game->name}}</big></h1>
-                    <h2><big>Жанр:</big> хуйня</h2>
-                    <h3><big>Developer:</big><a href="https://ru.wikipedia.org/wiki/Valve"> Valve</a></h3>
-                  <div>
-                    <h2>Projects</h2>
-                    <p>
-                      <li><a href="https://www.youtube.com/watch?v=UF4wPbeaTkc">https://www.youtube.com</a><span> - Чесний обзор Dota2</span></li>
-                    </p>
-                  </div>
+                    <h2><big>Categories:</big> хуйня</h2>
+                    <h3><big>Developer: </big>{{$game->developer->title}}</h3>
+                    <h3><big>Price: </big>${{$game->price}}</h3>
+                    <button id='buyButton'>Buy</button>
                 </div>
             </div>
         </div>
@@ -84,7 +80,7 @@
     <div id="info">
         <div class = "text2">
             <h1>Опис гри</h1>
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>{{$game->description}}</p>
         </div>
     </div>
 </div>

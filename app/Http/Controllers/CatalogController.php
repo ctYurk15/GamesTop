@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Game;
+use App\Models\Category;
 
 class CatalogController extends Controller
 {
     public function index(Request $request)
     {
         $games = Game::all();
+        $all_categories = Category::all();
         
         //sorting
         if(isset($request->orderBy))
@@ -36,12 +38,13 @@ class CatalogController extends Controller
         if($request->ajax())
         {
             return view('main.ajax.sorted-games', [
-                'games' => $games
+                'games' => $games,
             ])->render();
         }
         
         return view('main.catalog', [
-            'games' => $games
+            'games' => $games,
+            'categories' => $all_categories
         ]);
     }
 }

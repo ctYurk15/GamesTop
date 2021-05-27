@@ -13,85 +13,15 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <span class="j_title">{{__('Categories')}}</span>
 
-        <span class="bigcheck">
-          <label class="bigcheck">
-            <input type="checkbox" class="bigcheck" name="cheese" value="yes"/>
-            <span class="bigcheck-target"></span>
-            Гонки
-          </label>
-        </span>
-
-        <span class="bigcheck">
-          <label class="bigcheck">
-            <input type="checkbox" class="bigcheck" name="cheese" value="yes"/>
-            <span class="bigcheck-target"></span>
-            Інді
-          </label>
-        </span>
-
-        <span class="bigcheck">
-          <label class="bigcheck">
-            <input type="checkbox" class="bigcheck" name="cheese" value="yes"/>
-            <span class="bigcheck-target"></span>
-            Казуальні
-          </label>
-        </span>
-
-        <span class="bigcheck">
-          <label class="bigcheck">
-            <input type="checkbox" class="bigcheck" name="cheese" value="yes"/>
-            <span class="bigcheck-target"></span>
-            Онлайн
-          </label>
-        </span>
-
-        <span class="bigcheck">
-          <label class="bigcheck">
-            <input type="checkbox" class="bigcheck" name="cheese" value="yes"/>
-            <span class="bigcheck-target"></span>
-            Пригодницькі
-          </label>
-        </span>
-
-        <span class="bigcheck">
-          <label class="bigcheck">
-            <input type="checkbox" class="bigcheck" name="cheese" value="yes"/>
-            <span class="bigcheck-target"></span>
-            Рольові
-          </label>
-        </span>
-
-        <span class="bigcheck">
-          <label class="bigcheck">
-            <input type="checkbox" class="bigcheck" name="cheese" value="yes"/>
-            <span class="bigcheck-target"></span>
-            Симулятори
-          </label>
-        </span>
-
-        <span class="bigcheck">
-            <label class="bigcheck">
-              <input type="checkbox" class="bigcheck" name="cheese" value="yes"/>
-              <span class="bigcheck-target"></span>
-              Спорт
-            </label>
-          </span>
-
-          <span class="bigcheck">
-            <label class="bigcheck">
-              <input type="checkbox" class="bigcheck" name="cheese" value="yes"/>
-              <span class="bigcheck-target"></span>
-              Стратегії
-            </label>
-          </span>
-
-          <span class="bigcheck">
-            <label class="bigcheck">
-              <input type="checkbox" class="bigcheck" name="cheese" value="yes"/>
-              <span class="bigcheck-target"></span>
-              Екшн
-            </label>
-          </span>
+        @foreach($categories as $category)
+            <span class="bigcheck">
+              <label class="bigcheck">
+                <input type="checkbox" class="bigcheck category" name="{{$category->title}}" value="yes"/>
+                <span class="bigcheck-target"></span>
+                {{$category->title}}
+              </label>
+            </span>
+        @endforeach
 
           <span class="j_title">Сортування</span><br>
         <select class="src" id='sortingSelect'>
