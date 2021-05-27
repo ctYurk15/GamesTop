@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDevIdToGamesTable extends Migration
+class CreateGalleryImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddDevIdToGamesTable extends Migration
      */
     public function up()
     {
-        Schema::table('games', function (Blueprint $table) {
-            //$table->integer('developer_id');
-            //$table->foreign('developer_id')->references('id')->on('developers');
+        Schema::create('gallery_images', function (Blueprint $table) {
+            $table->id();
+            $table->string('img');
+            $table->integer('game_id');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +28,6 @@ class AddDevIdToGamesTable extends Migration
      */
     public function down()
     {
-        Schema::table('games', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('gallery_images');
     }
 }

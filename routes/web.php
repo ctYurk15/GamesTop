@@ -26,6 +26,7 @@ Route::get('/goods', function () {
 })->name('goods');
 
 Route::get('/test', 'App\Http\Controllers\TestController@allGames');
+Route::post('/addComment', 'App\Http\Controllers\GamePageController@addComment')->name('addComment');
 
 Auth::routes();
 
