@@ -34,7 +34,7 @@
                                 <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">{{ __('Home') }}</a>
                             </li>
                             <li>
-                                <a href="{{route('goods')}}"> Goods </a>
+                                <a href="{{route('cart')}}"> Cart </a>
                             </li>
                         @else
                             <li>

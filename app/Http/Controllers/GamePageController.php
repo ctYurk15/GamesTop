@@ -7,6 +7,7 @@ use App\Models\Game;
 use App\Models\User;
 use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class GamePageController extends Controller
 {
@@ -23,11 +24,10 @@ class GamePageController extends Controller
     {
         //getting received data
         $commentText = $request->commentText;
-        $username = $request->user;
         $gamename = $request->gamename;
         
         //getting ids 
-        $user_id = User::where('name', $username)->first()->id;
+        $user_id = Auth::user()->id;
         $game_id = Game::where('name', $gamename)->first()->id;
         
         //creating new comment
@@ -42,6 +42,5 @@ class GamePageController extends Controller
         return view('main.ajax.comments', [
             'comments' => $all_comments
         ])->render();
-        //return response()->json($all_comments);
     }
 }

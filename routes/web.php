@@ -19,14 +19,16 @@ Route::get('/', function () {
 })->name('main');
 
 Route::get('/catalog', 'App\Http\Controllers\CatalogController@index')->name('catalog');
-Route::get('/gamepage/{catalog}', 'App\Http\Controllers\GamePageController@show')->name('gamepage');
 
-Route::get('/goods', function () {
-    return view('main.goods');
-})->name('goods');
+/*Game routes*/
+Route::get('/gamepage/{game}', 'App\Http\Controllers\GamePageController@show')->name('gamepage');//gamepage
+Route::post('/addComment', 'App\Http\Controllers\GamePageController@addComment')->name('addComment');//add comment
+
+/*Cart routes*/
+Route::get('/cart', 'App\Http\Controllers\CartController@show')->name('cart'); //cart
+Route::post('/add-to-cart', 'App\Http\Controllers\CartController@addToCart')->name('addToCart'); //add goods to cart
 
 Route::get('/test', 'App\Http\Controllers\TestController@allGames');
-Route::post('/addComment', 'App\Http\Controllers\GamePageController@addComment')->name('addComment');
 
 Auth::routes();
 

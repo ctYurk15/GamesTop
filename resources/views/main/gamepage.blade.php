@@ -16,13 +16,22 @@
             </div>
             <div id="lowerDiv">
                 <div class = "text1">
-                    <h1><big>{{$game->name}}</big></h1>
-                    <h2><big>Categories:</big> хуйня</h2>
+                    <h1><big id='gamename'>{{$game->name}}</big></h1>
+                    <h2>
+                        <big>Categories:</big> 
+                        @foreach($game->categories as $category)
+                            @if($loop->last) 
+                                {{$category->title}}
+                            @else
+                                {{$category->title}},
+                            @endif
+                        @endforeach
+                    </h2>
                     <h3><big>Developer: </big>{{$game->developer->title}}</h3>
                     <h3><big>Price: </big>${{$game->price}}</h3>
                     @if (Route::has('login'))
                         @auth
-                            <button id='buyButton'>Buy</button>
+                            <button id='buyButton' data-route="{{route('addToCart')}}">Buy</button>
                         @else
                             <h3 style='color: red'>Log into your account for purchase</h3>
                         @endauth
@@ -68,7 +77,7 @@
                     <h3>Your comment</h3>
                     <textarea rows="5" cols="50" class="comment-input" name="commentArea"></textarea>
                     <br><br>
-                    <button id="comment-button" data-user="{{ Auth::user()->name }}" data-game="{{$game->name}}" data-route="{{route('addComment')}}">Send</button>
+                    <button id="comment-button" data-route="{{route('addComment')}}">Send</button>
                     <br><br>
                 </form>
             </div>
