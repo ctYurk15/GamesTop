@@ -78,7 +78,9 @@
                     <textarea rows="5" cols="50" class="comment-input" name="commentArea"></textarea>
                     <br><br>
                     <button id="comment-button" data-route="{{route('addComment')}}">Send</button>
-                    <br><br>
+                    <br>
+                    <h3 id='errorText'></h3>
+                    <br>
                 </form>
             </div>
         @else

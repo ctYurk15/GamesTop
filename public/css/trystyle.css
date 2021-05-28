@@ -172,3 +172,8 @@ input:hover
     position: relative;
     top: 70%;
 }
+
+#errorText
+{
+    color: red;
+}

@@ -10,25 +10,33 @@ $(document).ready(function(){
         var comment = $(".comment-input").val();
         var url = $("#comment-button").attr("data-route");
          
-        $.ajax({
-            url: url,
-            type: "POST",
-            data: {
-                commentText: comment,
-                gamename: gamename,
-            },
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(data) {
-                //console.log(data);
-                $("#comments-div").html(data);
-                $("#sendCommentForm")[0].reset();
-            },
-            error: function(data){
-                console.log(data);
-            }
-        });
+        if(comment != "")
+        {
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: {
+                    commentText: comment,
+                    gamename: gamename,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(data) {
+                    //console.log(data);
+                    $("#comments-div").html(data);
+                    $("#sendCommentForm")[0].reset();
+                    $("#errorText").text("");
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            });
+        }
+        else
+        {
+            $("#errorText").text("You can`t leave empty comment");
+        }
     });
     
     //adding game to cart
