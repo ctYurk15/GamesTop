@@ -72,13 +72,12 @@
     <br><br>
     @if (Route::has('login'))
         @auth
-            <div class="comment-div new-comment-div">
+            <div class="new-comment-div">
                 <form method="post" id='sendCommentForm'>
-                    <h3>Your comment</h3>
+                    <h2> Ваш коментар</h2>
                     <textarea rows="5" cols="50" class="comment-input" name="commentArea"></textarea>
+                    <br><br><button id="comment-button" name="sendCommentButton" data-route="{{route('addComment')}}">Відправити</button>
                     <br><br>
-                    <button id="comment-button" data-route="{{route('addComment')}}">Send</button>
-                    <br>
                     <h3 id='errorText'></h3>
                     <br>
                 </form>
@@ -91,7 +90,7 @@
     <br><br>
     <div id="comments-div">
         @foreach($game->comments as $comment)
-        <div class="comment-div">
+        <!--<div class="comment-div">
                 <table border="0px">
                     <tr>
                         <td width="10%">
@@ -111,7 +110,20 @@
                         </td>
                     </tr>
                 </table>
+            </div>-->
+        <div class="comment-div">
+            <div class="comments-profile-div">
+                {{$comment->user->name}}
+                <img src="/images/profile.png" class="comments-profile-image">
             </div>
+            <div class="comments-content-div">
+               {{$comment->commentText}}
+            </div>
+            <div class="comments-date-div">
+                Коментар було додано<br>
+                {{$comment->created_at}}  
+            </div>
+        </div>
         @endforeach
     </div>
 </div>

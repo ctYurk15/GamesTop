@@ -25,7 +25,7 @@
 
           <span class="j_title">Сортування</span><br>
         <select class="src" id='sortingSelect'>
-            <option value="popularity" selected>By popularity</option>
+            <option value="popularity">By popularity</option>
             <option value="price-low-high">By price from low to high</option>
             <option value="price-high-low">By price from high to low</option>
             <option value="name-a-z">By name A-Z</option>

@@ -34,12 +34,12 @@ class CatalogController extends Controller
             }
         }
         
-        $game_categories = [];
-        $categories_needed = [];
-        
+        //sorting games by categories
         if(isset($request->categories))
         {
             $sorted_games = [];
+            $categories_needed = [];
+            
             $categories_needed = (is_array($request->categories)) ? $request->categories : array($request->categories);
             
             foreach($games as $game) //checking every game
@@ -61,13 +61,44 @@ class CatalogController extends Controller
             $games = $sorted_games; //refilling array with sorted by categories games
         }
         
+        //sorting games by price
+        if(isset($request->minPrice) || isset($request->maxPrice))
+        {
+            $sorted_games = [];
+            
+            //what prices should we use
+            $minPrice = (isset($request->minPrice) && $request->minPrice != 'NaN') ? $request->minPrice : null;
+            $maxPrice = (isset($request->maxPrice) && $request->maxPrice != 'NaN') ? $request->maxPrice : null;
+            
+            foreach($games as $game)
+            {
+                $fits = true;
+                
+                if($minPrice != null && $game->price < $minPrice) //if game is cheaper than we need
+                {
+                    $fits = false;
+                }
+                if($maxPrice != null && $game->price > $maxPrice) //if game is more expensive than we need
+                {
+                    $fits = false;
+                }
+                
+                if($fits) //if price is in right range
+                {
+                    $sorted_games[] = $game;
+                }
+            }
+            
+            $games = $sorted_games; //refilling array with sorted by price games
+        }
+        
         //sending all games at once
         if($request->ajax())
         {
             return view('main.ajax.sorted-games', [
-                'games' => $games,
+                'games' => $games
             ])->render();
-            //return response()->json($categories_needed);
+            //return response()->json([$minPrice, $maxPrice]);
         }
         
         return view('main.catalog', [

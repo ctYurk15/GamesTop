@@ -1,5 +1,39 @@
 $('document').ready(function(){
     
+    //updating filter ui
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    
+    var orderBy = urlParams.get("orderBy");
+    var minPrice = urlParams.get("minPrice");
+    var maxPrice = urlParams.get("maxPrice");
+    var categories = urlParams.getAll("categories[]");
+    
+    //if sorting order is defined
+    if(orderBy != null) 
+    {
+        $("#sortingSelect").children("[value='"+orderBy+"']").prop("selected", true); //selecting option needed
+    }
+    
+    //if selected some categories
+    if(categories.length > 0)
+    {
+        categories.forEach(function(item){
+            $(".category[name='"+item+"']").prop("checked", true);
+        });
+    }
+    
+    //if price filter were filled
+    if(minPrice != null && !isNaN(minPrice))
+    {
+        $(".form-control-min").val(minPrice);
+    } 
+    if(maxPrice != null && !isNaN(maxPrice))
+    {
+        $(".form-control-max").val(maxPrice);
+    }
+    
+    
     //sorting games
     $("#sortButton").on("click", function(){
         var select = $("#sortingSelect");
@@ -14,6 +48,19 @@ $('document').ready(function(){
             }
         });
         
+        var minPrice = parseFloat($(".form-control-min").val());
+        var maxPrice = parseFloat($(".form-control-max").val());
+        
+        if(minPrice > maxPrice) //if user typed min greater than max, we swap it
+        {
+            [minPrice, maxPrice] = [maxPrice, minPrice];
+            
+            $(".form-control-min").val(minPrice);
+            $(".form-control-max").val(maxPrice);
+        }
+        
+        //console.log(minPrice+" "+maxPrice);
+        
         var url = ""+$(this).attr("data-route");
         
         $.ajax({
@@ -21,7 +68,9 @@ $('document').ready(function(){
             type: "GET",
             data: {
                 orderBy: orderBy,
-                categories: categories
+                categories: categories,
+                minPrice: minPrice,
+                maxPrice: maxPrice
             },
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -42,6 +91,16 @@ $('document').ready(function(){
                 categories.forEach(function(item){
                     newUrl += "&categories[]="+item;
                 });
+                
+                //prices
+                if(minPrice != null && !isNaN(minPrice)) 
+                {
+                    newUrl += "&minPrice="+minPrice;
+                }
+                if(maxPrice != null && !isNaN(maxPrice)) 
+                {
+                    newUrl += "&maxPrice="+maxPrice;
+                }
                 
                 history.pushState({}, '', newUrl);
             },
