@@ -16,4 +16,9 @@ class Order extends Model
     {
         return $this->belongsTo(Game::class);
     }
+    
+    public function total_price()
+    {
+        return $this->game->price * $this->count;
+    }
 }

@@ -26,7 +26,8 @@ Route::post('/addComment', 'App\Http\Controllers\GamePageController@addComment')
 
 /*Cart routes*/
 Route::get('/cart', 'App\Http\Controllers\CartController@show')->name('cart'); //cart
-Route::post('/add-to-cart', 'App\Http\Controllers\CartController@addToCart')->name('addToCart'); //add goods to cart
+Route::post('/change-cart', 'App\Http\Controllers\CartController@changeCart')->name('changeCart'); //add goods to cart
+Route::post('/purchase-cart', 'App\Http\Controllers\CartController@purchase')->name('purchase'); //purchase goods
 
 Route::get('/test', 'App\Http\Controllers\TestController@allGames');
 

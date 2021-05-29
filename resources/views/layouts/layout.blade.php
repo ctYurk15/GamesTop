@@ -74,7 +74,6 @@
         
     <footer>
             <div class="footer-div">
-                <hr class="footer-hr">
                 
                 <table width="100%">
                     <tr>
@@ -100,7 +99,7 @@
                         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 </table>
             
-                <p class="footer-text">Copyright © <time datetime="2020">2020</time> Games Top</p>
+                <p class="footer-text">Copyright © <time datetime="2020">2021</time> Games Top</p>
                 
                 
             </div>

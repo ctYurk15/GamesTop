@@ -28,12 +28,21 @@ $('document').ready(function(){
             },
             success: function(data) {
                 //console.log(data);
-                $(".products").html(data);
+                $(".products").html(data); 
                 
+                //changing url 
                 let positionParameters = location.pathname.indexOf('?');
                 let url = location.pathname.substring(positionParameters, location.pathname.length);
                 let newUrl = url + '?';
+                
+                //sorting param
                 newUrl += 'orderBy='+orderBy;
+                
+                //categories
+                categories.forEach(function(item){
+                    newUrl += "&categories[]="+item;
+                });
+                
                 history.pushState({}, '', newUrl);
             },
             error: function(error) {

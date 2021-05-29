@@ -27,11 +27,11 @@
                                     {{$order->game->name}}
                                 </td>
                                 <td width="15%" align="right" valign="bottom">
-                                    <i class="goods-item-pricetext" id="sumGameText1">11.99$</i><br>
+                                    <i class="goods-item-pricetext" id="sumGameText{{$loop->index}}">${{$order->total_price()}}</i><br>
                                     <br>
-                                    <button class="goods-item-button" onclick="changeGamesCount(11.99, 1, 'gamesCountText1', 'sumGameText1', 'totalSumText', 'goods-item-pricetext')">+</button>
-                                    <b id="gamesCountText1">{{$order->count}}</b>
-                                    <button class="goods-item-button" onclick="changeGamesCount(11.99, -1, 'gamesCountText1', 'sumGameText1', 'totalSumText', 'goods-item-pricetext')">-</button>
+                                    <button class="goods-item-button" data-route="{{route('changeCart')}}">+</button>
+                                    <b id="gamesCountText{{$loop->index}}">{{$order->count}}</b>
+                                    <button class="goods-item-button" data-route="{{route('changeCart')}}">-</button>
                                 </td>
                             </tr>
                         </table>
@@ -39,14 +39,10 @@
                 @endforeach
                 <br>
                 <p align="right">
-                    <i class="goods-item-total-pricetext" id="totalSumText">Разом: 11.99$</i><br>
-                    <button class="goods-buybutton"> Купити </button>
+                    <i class="goods-item-total-pricetext" id="totalSumText">Разом: ${{$cartSum}}</i><br>
+                    <button class="goods-buybutton" data-route="{{route('purchase')}}"> Купити </button>
                 </p>
                 <br>
-
-
-                <script src="/js/gamesCountScript.js"></script>
-                <script>updateGoodsSumText('goods-item-pricetext', 'totalSumText');</script>
             @else
                 <h3>There`s empty here</h3>
             @endif
@@ -56,4 +52,9 @@
     @endif
 </main>
 
+@endsection
+
+
+@section('custom_js')
+    <script src="/js/cart.js"></script>
 @endsection

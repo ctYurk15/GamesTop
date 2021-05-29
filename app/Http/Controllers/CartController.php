@@ -9,6 +9,24 @@ use Auth;
 
 class CartController extends Controller
 {
+    public function cartSum($user_id)
+    {
+        $result = 0;
+        
+        $orders = Order::select()->where('user_id', $user_id)->get();
+        
+        foreach($orders as $order)
+        {
+            //getting count&price 
+            $count = doubleval($order->count);
+            $price = doubleval($order->game->price);
+            
+            $result += $count * $price;
+        }
+        
+        return $result;
+    }
+    
     public function show()
     {
         $orders = null;
@@ -21,15 +39,21 @@ class CartController extends Controller
             $orders = Order::where('user_id', $user_id)->get();
             
             $authorized = true;
+            
+            return view("main.cart", [
+                "orders" => $orders,
+                "authorized" => $authorized,
+                "cartSum" => $this->cartSum($user_id)
+            ]);
         }
         
         return view("main.cart", [
             "orders" => $orders,
-            "authorized" => $authorized
+            "authorized" => $authorized,
         ]);
     }
     
-    public function addToCart(Request $request)
+    public function changeCart(Request $request)
     {
         $user_id = Auth::user()->id;
         $game_id = Game::where('name', $request->gamename)->first()->id;
@@ -47,11 +71,32 @@ class CartController extends Controller
         {
             $values = $order->toArray(); //I dont know how I can get `count` column in another way
             
-            //getting current count, and increasing it
-            $newCount = $values['count'] + 1;
-            $order->update(['count' => $newCount]);
+            $increaseCount = 1;
+            if(isset($request->changeCount)) //if we`re changing count from cart
+            {
+                $increaseCount = $request->changeCount;
+            }
             
-            $result = true;
+            //getting current count, and increasing/decreasing it
+            $newCount = $values['count'] + $increaseCount;
+            
+            if($newCount <= 0) //is user wants to delete order 
+            {
+                $order->delete();
+                $result = true;
+            }
+            else
+            {
+                $order->update(['count' => $newCount]);
+                $result = true;
+            }
+            
+            $orders = Order::where('user_id', $user_id)->get();
+            
+            return view("main.ajax.newcart", [
+                "orders" => $orders,
+                "cartSum" => $this->cartSum($user_id)
+            ])->render();
         }
         else
         {
@@ -68,5 +113,16 @@ class CartController extends Controller
         }
         
         return response()->json($result);
+    }
+    
+    public function purchase()
+    {
+        if(Auth::check()) //in order to avoid some bugs
+        {
+            $user_id = Auth::user()->id;
+            $orders = Order::where('user_id', $user_id)->delete();
+            
+            return view("main.ajax.thanks")->render();
+        }
     }
 }
