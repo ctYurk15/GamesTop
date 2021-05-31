@@ -26,7 +26,7 @@
 
 @media only screen and (min-width: 1000px) {
     .product-wrapper {
-        width: 33.333%;
+        width: 25%;
     }
 }
 
@@ -52,7 +52,7 @@
     border:0;
     padding: 0;
     float: right;
-    width: 70%;
+    width: 100%;
 }
 .j_title {
     font-weight: bold;
@@ -61,43 +61,18 @@
     padding-top: 1%;
 }
 
-.checkboxdiv
-{
-    display: inline-block;
-    background-color: gray;
-    font-size: 25px;
-    width: 26.5%;
-    min-width: 200px;
-    height: 0%;
-    border: 3px solid black;
-    border-radius: 7px;
-    margin-top: 1%;
-    margin-left: 0.5%;
-}
-
 @media only screen and (max-width: 768px) {
-    .products {
-    list-style: none;
-    margin-top: 2%;
-    margin-left: 13%;
-    border:0;
-    padding: 0;
-    float: left;
-    width: 80%;
-}
+    .products 
+    {
+        list-style: none;
+        margin-top: 2%;
+        margin-left: 13%;
+        border:0;
+        padding: 0;
+        float: left;
+        width: 80%;
+    }
 
-.checkboxdiv
-{
-    display: inline-block;
-    background-color: gray;
-    margin-left: 11%;
-    font-size: 25px;
-    width: 80%;
-    min-width: 200px;
-    height: 10%;
-    border: 3px solid black;
-    border-radius: 7px;
-}
 }
 
 .src {
@@ -213,35 +188,6 @@ i {
 label{
     color: black;
     cursor: pointer;
-}
-
-
-/* Customize the label (the container) */
-
-span.bigcheck-target {
-  font-family: FontAwesome; /* Use an icon font for the checkbox */
-}
-
-input[type='checkbox'].bigcheck {
-    width: 0px;
-    height: 0px;
-   /* Hide the real checkbox */
-}
-
-input[type='checkbox'].bigcheck + span.bigcheck-target:after {
-    content: "\f096"; /* In fontawesome, is an open square (fa-square-o) */
-}
-
-input[type='checkbox'].bigcheck:checked + span.bigcheck-target:after {
-  content: "\f046"; /* fontawesome checked box (fa-check-square-o) */
-  color: yellow;
-}
-
-/* ==== Optional - colors and padding to make it look nice === */
-
-span.bigcheck {
-    display: block;
-    padding: 2px;
 }
 
 

@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //main routes
-Route::get('/', function () {
-    return view('main.main');
-})->name('main');
+Route::get('/', 'App\Http\Controllers\MainController@index')->name('main');
 
 Route::get('/catalog', 'App\Http\Controllers\CatalogController@index')->name('catalog');
 

@@ -31,7 +31,7 @@
                     <h3><big>Price: </big>${{$game->price}}</h3>
                     @if (Route::has('login'))
                         @auth
-                            <button id='buyButton' data-route="{{route('changeCart')}}">Buy</button>
+                            <button id='buyButton' data-route="{{route('changeCart')}}" data-cart-route="{{route('cart')}}">Buy</button>
                         @else
                             <h3 style='color: red'>Log into your account for purchase</h3>
                         @endauth

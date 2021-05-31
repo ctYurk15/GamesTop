@@ -43,6 +43,7 @@ $(document).ready(function(){
     $("#buyButton").on("click", function(){
         
         var url = $(this).attr("data-route");
+        var next_url = $(this).attr("data-cart-route");
         
         $.ajax({
             url: url,
@@ -55,6 +56,7 @@ $(document).ready(function(){
             },
             success: function(data) {
                 console.log(data);
+                location.replace(next_url);
             },
             error: function(data){
                 console.log(data);

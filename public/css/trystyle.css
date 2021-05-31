@@ -180,3 +180,8 @@ input:hover
 {
     color: red;
 }
+
+hr
+{
+    border: 1px solid yellow;
+}

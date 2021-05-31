@@ -153,6 +153,7 @@ ul
     width: 50px;
 }
 
+/* It fixes footer somehow somewhere*/
 .page{
     overflow: hidden;
     display: flex;
