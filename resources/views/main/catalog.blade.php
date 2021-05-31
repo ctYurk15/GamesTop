@@ -4,11 +4,11 @@
 
 @section('custom_css')
 <link href="/css/catalog.css" rel='stylesheet'>
+
 @endsection
 
 @section('content')
-
-<main class='content'>
+<div class="container">
     <div class="checkboxdiv">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <span class="j_title">{{__('Categories')}}</span>
@@ -68,8 +68,7 @@
         </li>
         @endforeach
     </ul>
-</main>
-
+</div>
 @endsection
 
 

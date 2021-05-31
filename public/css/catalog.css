@@ -1,3 +1,9 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 .product-wrapper {
     display: block;
     width: 100%;
@@ -237,3 +243,8 @@ span.bigcheck {
     display: block;
     padding: 2px;
 }
+
+
+
+
+
