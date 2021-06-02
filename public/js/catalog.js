@@ -33,6 +33,26 @@ $('document').ready(function(){
         $(".form-control-max").val(maxPrice);
     }
     
+    //pagination
+    var maxGamesShown = 0;
+    
+    function paginate(games)
+    {
+        //increasing limit of games
+        maxGamesShown += games;
+        
+        //turning of hidden class
+        for(var i = 0; i < maxGamesShown; i++)
+        {
+            $(".product-wrapper").eq(i).removeClass("hidden");
+        }
+        
+        return maxGamesShown >= $(".product-wrapper").length;
+    }
+    
+    //start pagination
+    paginate(9);
+    
     
     //sorting games
     $("#sortButton").on("click", function(){
@@ -108,5 +128,16 @@ $('document').ready(function(){
                 console.log(error);
             }
         });
+    });
+    
+    //pagination
+    $("#paginationText").on("click", function(){
+        //pagination by itself
+        var over = paginate(9);
+        
+        if(over) //does we still need this text
+        {
+            $(this).addClass("hidden");
+        }
     });
 });

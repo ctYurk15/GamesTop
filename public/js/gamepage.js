@@ -55,8 +55,16 @@ $(document).ready(function(){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function(data) {
-                console.log(data);
-                location.replace(next_url);
+                //console.log(data);
+                
+                if(data.Result)
+                {
+                    location.replace(next_url);
+                }
+                else 
+                {
+                    alert("Sorry, there`s no more keys for the game");
+                }
             },
             error: function(data){
                 console.log(data);

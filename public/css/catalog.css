@@ -5,7 +5,6 @@
 }
 
 .product-wrapper {
-    display: block;
     width: 100%;
     float: left;
     transition: width .2s;
@@ -245,6 +244,10 @@ span.bigcheck {
 }
 
 
-
+#paginationText:hover
+{
+    cursor: pointer;
+    color: yellow;
+}
 
 

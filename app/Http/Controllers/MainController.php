@@ -10,9 +10,10 @@ class MainController extends Controller
     public function index()
     {
         $new_games = Game::orderBy("id", "DESC")->take(4)->get();
+        $best_sellers = Game::orderBy("purchase_count", "DESC")->take(4)->get();
         
         //generating random ids for games
-        $random_number_array = range(1, 13);
+        $random_number_array = range(1, Game::get()->count());
         shuffle($random_number_array);
         $random_number_array = array_slice($random_number_array, 1, 8);
         
@@ -20,7 +21,8 @@ class MainController extends Controller
         
         return view("main.main", [
             'new_games' => $new_games,
-            'random_games' => $random_games
+            'random_games' => $random_games,
+            'best_sellers' => $best_sellers
         ]);
     }
 }

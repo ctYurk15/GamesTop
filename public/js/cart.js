@@ -30,9 +30,18 @@ $(document).ready(function(){
                 success: function(data)
                 {
                     //console.log(data);
-                    $(".goods-div").html(data);
-
-                    reload_js('/js/cart.js'); //reloading js
+                    
+                    //gamkeys is enough 
+                    if(data != false)
+                    {
+                        $(".goods-div").html(data);
+                        reload_js('/js/cart.js'); //reloading js
+                        
+                    }
+                    else 
+                    {
+                        alert("Sorry, there`s no more keys for the game");
+                    }
                     
                     readyToSendRequest = true;
                 },
@@ -61,7 +70,7 @@ $(document).ready(function(){
                 },
                 success: function(data)
                 {
-                    //console.log(data);
+                    console.log(data);
                     $(".goods-div").html(data);
                     readyToSendRequest = true;
                 },

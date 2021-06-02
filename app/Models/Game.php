@@ -13,6 +13,8 @@ class Game extends Model
 {
     use HasFactory;
     
+    protected $fillable = ['purchase_count'];
+    
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'category__games');

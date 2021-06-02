@@ -48,10 +48,9 @@
 
 
     <!-------------- Try Checkbox ------------------>
-
     <ul class="products">
        @foreach($games as $game)
-        <li class="product-wrapper">
+        <li class="product-wrapper hidden">
             <a href="{{route('gamepage', [$game->alias])}}" class="product">
                 <div class="product-photo">
                     <img class = "product_img" src="/images/{{$game->img}}" alt="">
@@ -67,11 +66,14 @@
             </a>
         </li>
         @endforeach
+        <h3 id='paginationText'>More games</h3><br>
     </ul>
+    
+    
 </div>
 @endsection
 
 
 @section('custom_js')
-<script src='/js/sortCatalog.js'></script>
+<script src='/js/catalog.js'></script>
 @endsection

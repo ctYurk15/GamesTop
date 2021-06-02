@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\GamesTopPurchase;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 //main routes
 Route::get('/', 'App\Http\Controllers\MainController@index')->name('main');
+
+Route::get('/email', function(){
+    return new GamesTopPurchase;
+});
 
 Route::get('/catalog', 'App\Http\Controllers\CatalogController@index')->name('catalog');
 

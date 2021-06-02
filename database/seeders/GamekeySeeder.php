@@ -16,7 +16,7 @@ class GamekeySeeder extends Seeder
      */
     public function run()
     {
-        for($game = 1; $game <= 13; $game++)
+        for($game = 13; $game <= 22; $game++)
         {
             for($index = 0; $index < 10; $index++)
             {
