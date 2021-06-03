@@ -243,6 +243,10 @@ span.bigcheck {
     padding: 2px;
 }
 
+#paginationText
+{
+    margin-bottom: 0px;
+}
 
 #paginationText:hover
 {

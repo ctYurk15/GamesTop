@@ -58,10 +58,10 @@
                 <script src="/js/app1.js"></script><br>
                 <div class = "divform">
                         <img src="/images/Mylogo.png"  width="150px" height="40px" alt="Games Top" class="left-img" />
-                        <form class = "searchform">
-                            <p><input class="input1" type="search" name="q" placeholder="Пошук по назві"> 
-                            <input class="input2" type="submit" value="Знайти"></p>
-                        </form>
+                        <!--<form class = "searchform">
+                            <p><input class="input1" type="search" name="q" placeholder="Пошук по назві" id="nameInput"> 
+                            <input class="input2" type="submit" value="Знайти" id="submitNameInput"></p>
+                        </form>-->
 
                 </div>
 

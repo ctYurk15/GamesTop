@@ -23,16 +23,23 @@
             </span>
         @endforeach
 
-          <span class="j_title">Сортування</span><br>
+          <span class="j_title">Sort by </span><br>
         <select class="src" id='sortingSelect'>
-            <option value="popularity">By popularity</option>
-            <option value="price-low-high">By price from low to high</option>
-            <option value="price-high-low">By price from high to low</option>
-            <option value="name-a-z">By name A-Z</option>
-            <option value="name-z-a">By name Z-A</option>
+            <option value="popularity">Popularity</option>
+            <option value="price-low-high">Price from low to high</option>
+            <option value="price-high-low">Price from high to low</option>
+            <option value="name-a-z">Name A-Z</option>
+            <option value="name-z-a">Name Z-A</option>
         </select><br>
-
-        <span class="j_title">Ціна до, грн</span><br>
+        <br>
+        <span class="j_title">Name like: </span><br>
+        <div class="form-price">
+            <div class="form-group">
+                <input type="text" placeholder="name" class="form-control" id="gamename">
+            </div>
+        </div>
+        <br>
+        <span class="j_title">Price(in $)</span><br>
         <div class="form-price">
             <div class="form-group">
                 <input type="text" placeholder="0" class="form-control form-control-min">
@@ -66,11 +73,12 @@
             </a>
         </li>
         @endforeach
-        <h3 id='paginationText'>More games</h3><br>
+        
     </ul>
     
     
 </div>
+<h3 id='paginationText'>More games</h3><br>
 @endsection
 
 

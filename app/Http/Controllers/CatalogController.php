@@ -32,6 +32,10 @@ class CatalogController extends Controller
             {
                 $games = Game::orderBy("price", "DESC")->get();
             }
+            if($request->orderBy == "popularity")
+            {
+                $games = Game::orderBy("purchase_count", "DESC")->get();
+            }
         }
         
         //sorting games by categories
@@ -92,13 +96,38 @@ class CatalogController extends Controller
             $games = $sorted_games; //refilling array with sorted by price games
         }
         
+        //sorting by name
+        if(isset($request->gamename))
+        {
+            $sorted_games = [];
+            
+            $gamename = strtolower($request->gamename);
+            
+            foreach($games as $game)
+            {
+                $fits = false;
+                
+                if(str_contains(strtolower($game->name), $gamename))
+                {
+                    $fits = true;
+                }
+                
+                if($fits) //if price is in right range
+                {
+                    array_push($sorted_games, $game);
+                }
+            }
+            
+            $games = $sorted_games; //refilling array with sorted by price games
+        }
+        
         //sending all games at once
         if($request->ajax())
         {
             return view('main.ajax.sorted-games', [
                 'games' => $games
             ])->render();
-            //return response()->json([$minPrice, $maxPrice]);
+            //return response()->json($request->gamename);
         }
         
         return view('main.catalog', [

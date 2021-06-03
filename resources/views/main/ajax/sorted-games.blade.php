@@ -15,4 +15,3 @@
     </a>
 </li>
 @endforeach
-<h3 id='paginationText'>More games</h3><br>

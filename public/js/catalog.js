@@ -8,6 +8,7 @@ $('document').ready(function(){
     var minPrice = urlParams.get("minPrice");
     var maxPrice = urlParams.get("maxPrice");
     var categories = urlParams.getAll("categories[]");
+    var gamename = urlParams.get("gamename");
     
     //if sorting order is defined
     if(orderBy != null) 
@@ -33,13 +34,27 @@ $('document').ready(function(){
         $(".form-control-max").val(maxPrice);
     }
     
+    //if name is defined
+    if(gamename != null)
+    {
+        $("#gamename").val(gamename);
+    }
+    
     //pagination
     var maxGamesShown = 0;
     
-    function paginate(games)
+    function paginate(games, refresh=false)
     {
         //increasing limit of games
-        maxGamesShown += games;
+        if(refresh) //if we need to sort again
+        {
+            maxGamesShown = games;
+            $("#paginationText").removeClass("hidden");
+        }
+        else
+        {
+            maxGamesShown += games;
+        }
         
         //turning of hidden class
         for(var i = 0; i < maxGamesShown; i++)
@@ -47,11 +62,15 @@ $('document').ready(function(){
             $(".product-wrapper").eq(i).removeClass("hidden");
         }
         
-        return maxGamesShown >= $(".product-wrapper").length;
+        //is there some more games?
+        if(maxGamesShown >= $(".product-wrapper").length)
+        {
+            $("#paginationText").addClass("hidden");
+        }
     }
     
     //start pagination
-    paginate(9);
+    paginate(9, true);
     
     
     //sorting games
@@ -70,6 +89,7 @@ $('document').ready(function(){
         
         var minPrice = parseFloat($(".form-control-min").val());
         var maxPrice = parseFloat($(".form-control-max").val());
+        var gamename = $("#gamename").val();
         
         if(minPrice > maxPrice) //if user typed min greater than max, we swap it
         {
@@ -90,7 +110,8 @@ $('document').ready(function(){
                 orderBy: orderBy,
                 categories: categories,
                 minPrice: minPrice,
-                maxPrice: maxPrice
+                maxPrice: maxPrice,
+                gamename: gamename
             },
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -122,7 +143,16 @@ $('document').ready(function(){
                     newUrl += "&maxPrice="+maxPrice;
                 }
                 
+                //gamename
+                if(gamename != "")
+                {
+                    newUrl += "&gamename="+gamename;
+                }
+                
+                //forming url & pushing it
                 history.pushState({}, '', newUrl);
+                
+                paginate(9, true);
             },
             error: function(error) {
                 console.log(error);
@@ -132,12 +162,8 @@ $('document').ready(function(){
     
     //pagination
     $("#paginationText").on("click", function(){
-        //pagination by itself
-        var over = paginate(9);
         
-        if(over) //does we still need this text
-        {
-            $(this).addClass("hidden");
-        }
+        //pagination by itself
+        paginate(9);
     });
 });
