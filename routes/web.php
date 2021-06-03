@@ -32,8 +32,12 @@ Route::get('/cart', 'App\Http\Controllers\CartController@show')->name('cart'); /
 Route::post('/change-cart', 'App\Http\Controllers\CartController@changeCart')->name('changeCart'); //add goods to cart
 Route::post('/purchase-cart', 'App\Http\Controllers\CartController@purchase')->name('purchase'); //purchase goods
 
+/*User routes*/
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); //homepage of user
+Route::post('/changeUserData', 'App\Http\Controllers\HomeController@changeUserData')->name("changeUserData");
+
 Route::get('/test', 'App\Http\Controllers\TestController@allGames');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

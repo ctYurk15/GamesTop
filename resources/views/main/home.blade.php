@@ -29,21 +29,21 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-                    <h1 class="Username">{{$user->name}}</h1>
+                    <h1 class="Username" id="username">{{$user->name}}</h1>
                     <hr class="liniya">
                     <div id="wrapper">
                         <div id="c1">
                            <a class="Change"> Change Password: </a>
                            <input class="input6" type="Password" name="changepassword" placeholder="12345">
                            <br>
-                            <a class="Change"> Change Email: </a>
-                            <input class="input7" type="TEXT" name="changeemail" placeholder="dsatd@gmail.com">
+                            <a class="Change"> Change Login: </a>
+                            <input class="input7" type="TEXT" name="changeemail" placeholder="your_new_login">
                             <br>
-                            <input class="input8" type="submit" value="Apply">
+                            <input class="input8" type="submit" value="Apply" data-url="{{route('changeUserData')}}">
                         </div>
                         <div class="buyedkeys" id="c2">
-                            <p>5
-                           <p>Buyed Keys
+                            <p>{{$user->keys_purchased}}</p>
+                            <p>Buyed Keys</p>
                        </div>    
                     </div>
                     <div>
@@ -70,4 +70,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('custom_js')
+    <script src="/js/account.js"></script>
 @endsection
