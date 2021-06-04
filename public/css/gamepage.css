@@ -116,17 +116,18 @@
 
 .text1 { 
   height: 100%;
-  background: #ccc;
+  background: #949494;
   padding: 5px;
   padding-right: 20px; 
   border: solid 1px black;
   border-radius: 8px;
   flex-direction: row;
+  color: white;
   }
 
 .text2 {
   height: 100%;
-  background: #ccc;
+  background: #949494;
   padding: 5px;
   border: solid 1px black;
   border-radius: 8px;
@@ -182,7 +183,7 @@
 .comment-div
 {
     padding: 10px;
-    background-color: silver;
+    background-color: #949494;
     border: 2px solid black;
     border-radius: 5px;
     display: flex;
@@ -229,13 +230,13 @@
     width: 10%;
     min-width: 100px;
     min-height: 120px;
-    background-color: dimgray;
+    background-color: #474747;
     border: 2px solid black;
     border-radius: 5px;
-    color: white;
     font-size: 20px;
     padding: 2px;
     text-align: center;
+    color: gold;
 }
 
 .comments-profile-image
@@ -244,6 +245,7 @@
     min-width: 80px;
     border: 2px solid black;
     border-radius: 5px;
+    
 }
 
 .comments-content-div
@@ -252,11 +254,12 @@
     font-size: 20px;
     padding: 5px;
     text-align: left;
+    color: white;
 }
 
 .comments-date-div
 {
-    background-color: dimgray;
+    background-color: #474747;
     border: 2px solid black;
     border-radius: 5px;
     color: white;

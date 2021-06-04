@@ -57,7 +57,8 @@
                 </div>
                 <script src="/js/app1.js"></script><br>
                 <div class = "divform">
-                        <img src="/images/Mylogo.png"  width="150px" height="40px" alt="Games Top" class="left-img" />
+                       <a href="{{route('main')}}"><img src="/images/Mylogo.png"  width="150px" height="40px" alt="Games Top" class="left-img" /></a>
+                        
                         <!--<form class = "searchform">
                             <p><input class="input1" type="search" name="q" placeholder="Пошук по назві" id="nameInput"> 
                             <input class="input2" type="submit" value="Знайти" id="submitNameInput"></p>
@@ -74,30 +75,24 @@
         
     <footer>
             <div class="footer-div">
-                
-                <table width="100%">
-                    <tr>
-                        <footer id="myFooter">
-                            <div class="container">
-                                <ul>
-                                    <li><a href="#">Company Information</a></li>
-                                    <li><a href="#">Contact us</a></li>
-                                    <li><a href="#">Reviews</a></li>
-                                    <li><a href="#">Terms of service</a></li>
-                                    <div>
-
-                                    </div>
-                                </ul>
-                            </div>
-                            <div class="footer-social">
-                                <a href="#" class="social-icons"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="social-icons"><i class="fa fa-google-plus"></i></a>
-                                <a href="#" class="social-icons"><i class="fa fa-twitter"></i></a>
-                            </div>
-                        </footer>
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-                        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                </table>
+                <input id="button" type="image" value="" src="/images/arrow.png">
+                    <footer id="myFooter">
+                        <div class="container">
+                            <ul>
+                                <li><a href="#">Company Information</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Reviews</a></li>
+                                <li><a href="#">Terms of service</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-social">
+                            <a href="#" class="social-icons"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="social-icons"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="social-icons"><i class="fa fa-twitter"></i></a>
+                        </div>
+                    </footer>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
             
                 <p class="footer-text">Copyright © <time datetime="2020">2021</time> Games Top</p>
                 

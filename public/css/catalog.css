@@ -4,6 +4,20 @@
     box-sizing: border-box;
 }
 
+
+#paginationText
+{
+    margin-bottom: 0px;
+    position: relative;
+    left: 30%;
+}
+
+#paginationText:hover
+{
+    cursor: pointer;
+    color: yellow;
+}
+
 .product-wrapper {
     width: 100%;
     float: left;
@@ -75,28 +89,34 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .products {
-    list-style: none;
-    margin-top: 2%;
-    margin-left: 13%;
-    border:0;
-    padding: 0;
-    float: left;
-    width: 80%;
-}
+    .products 
+    {
+        list-style: none;
+        margin-top: 2%;
+        margin-left: 13%;
+        border:0;
+        padding: 0;
+        float: left;
+        width: 80%;
+    }
 
-.checkboxdiv
-{
-    display: inline-block;
-    background-color: gray;
-    margin-left: 11%;
-    font-size: 25px;
-    width: 80%;
-    min-width: 200px;
-    height: 10%;
-    border: 3px solid black;
-    border-radius: 7px;
-}
+    .checkboxdiv
+    {
+        display: inline-block;
+        background-color: gray;
+        margin-left: 11%;
+        font-size: 25px;
+        width: 80%;
+        min-width: 200px;
+        height: 10%;
+        border: 3px solid black;
+        border-radius: 7px;
+    }
+    #paginationText
+    {
+        position: relative;
+        left: 13%;
+    }
 }
 
 .src {
@@ -243,15 +263,22 @@ span.bigcheck {
     padding: 2px;
 }
 
-#paginationText
+
+#sortButton
 {
-    margin-bottom: 0px;
+    border: 2px solid black;
+    border-radius: 7px;
+    background-color: dimgray;
+    font-size: 20px;
+    color: white;
+    width: 30%;
+    margin: 3px;
 }
 
-#paginationText:hover
+#sortButton:hover
 {
+    border: 2px solid yellow;
     cursor: pointer;
-    color: yellow;
 }
 
 

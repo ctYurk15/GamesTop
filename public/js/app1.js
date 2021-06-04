@@ -12,8 +12,8 @@ window.onload = function(){
             //alert(1);
             if (scrolled > 0) {
                 window.scrollTo(0,scrolled);
-                scrolled = scrolled - 14; 
-                timer = setTimeout(scrollToTop, 14);
+                scrolled = scrolled - 30; 
+                timer = setTimeout(scrollToTop, 3);
             }
             else {
                 clearTimeout(timer);

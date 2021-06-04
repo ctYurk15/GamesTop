@@ -11,25 +11,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Home') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
+                    
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-                    <h1 class="Username" id="username">{{$user->name}}</h1>
+                    <h1 class="Username" id="username">
+                        {{$user->name}}
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                        ( {{ __('Logout') }} )
+                    </a>
+                    </h1>
                     <hr class="liniya">
                     <div id="wrapper">
                         <div id="c1">
@@ -48,22 +43,40 @@
                     </div>
                     <div>
                         <hr class="liniya">
-                        <h1 class="Username">Achiements</h1>
+                        <h1 class="Username">Achievements</h1>
                         <hr class="liniya">
                     </div>
                     <ul class="products">
-                        <li class="product-wrapper">
-                            <div class="product">
-                                <div class="product-photo">
-                                    <img class = "product_img" src="/images/achievements/achievement1.png" alt="">
-                                    <div class="AchieveInfo">
-                                        <p>Завдання</p>
-                                        <hr>
-                                        <p>Потрать більше 100$</p>
+                       <!-- Opened achievements -->
+                        @foreach($user->opened_achievments as $achievment)
+                            <li class="product-wrapper">
+                                <div class="product">
+                                    <div class="product-photo">
+                                        <img class="product_img" src="/images/achievements/{{$achievment->active_img}}" alt="">
+                                        <div class="AchieveInfo">
+                                            <p>Task</p>
+                                            <hr>
+                                            <p>{{$achievment->title}}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                        @endforeach
+                        <!-- Closed achievements -->
+                        @foreach($closed_achievments as $achievment)
+                            <li class="product-wrapper">
+                                <div class="product">
+                                    <div class="product-photo">
+                                        <img class="product_img" src="/images/achievements/{{$achievment->unactive_img}}" alt="">
+                                        <div class="AchieveInfo">
+                                            <p>Task</p>
+                                            <hr>
+                                            <p>{{$achievment->title}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
