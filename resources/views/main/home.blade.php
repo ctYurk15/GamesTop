@@ -17,8 +17,8 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-                    <h1 class="Username" id="username">
-                        {{$user->name}}
+                    <h1 class="Username">
+                        <span id="username">{{$user->name}}</span>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
