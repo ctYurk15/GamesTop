@@ -5,7 +5,7 @@
     background-color: gray;
     border: 2px solid black;
     border-radius: 5px;
-    position: absolute;
+    position: relative;
     left: 20%;
     top: 30%;
 }
@@ -80,6 +80,10 @@
         width: 25%;
         font-size: 25px;
     }
+    .goods-buybutton
+    {
+        font-size: 25px;
+    }
 }
     
 @media screen and (max-width: 768px)
@@ -89,9 +93,14 @@
         width: 20%;
         font-size: 15px;
     }
+
+    .goods-buybutton
+    {
+        font-size: 15px;
+    }
 }
 
-footer
+.block
 {
-    display: none;
+    visibility: hidden;
 }
