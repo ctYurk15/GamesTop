@@ -9,5 +9,5 @@ class Developer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title'];
+    protected $fillable = ['id', 'title'];
 }

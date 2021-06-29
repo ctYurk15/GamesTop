@@ -4,28 +4,28 @@ namespace App\Http\Controllers\Adminka;
 
 use App\Http\Controllers\Adminka\AdminkaController;
 use Illuminate\Http\Request;
-use App\Models\Developer;
+use App\Models\Category;
 
-class AdminkaDevController extends AdminkaController
+class AdminkaCategoryController extends AdminkaController
 {
-    public function index(Request $request)
+    public function index()
     {
-        $developers = Developer::all();
-        return response()->json($developers, 200);
+        $categories = Category::all();
+        return response()->json($categories, 200);
     }
 
     public function show(Request $request)
     {
-        $developer = Developer::find($request->developer);
-        return response()->json($developer, 200);
+        $category = Category::find($request->category);
+        return response()->json($category, 200);
     }
 
     public function store(Request $request)
     {
         if($request->password != null && $request->password == $this->password)
         {
-            Developer::create(["title" => $request->title]);
-            return response()->json(["result" => true, "message" => "Created successfuly!"], 201);
+            Category::create(["title" => $request->title]);
+            return response()->json(["result" => true, "message" => "Created successfully"], 201);
         }
 
         return response()->json(["result" => false, "message" => "Password is not correct"], 403);
@@ -35,10 +35,10 @@ class AdminkaDevController extends AdminkaController
     {
         if($request->password != null && $request->password == $this->password)
         {
-            $developer = Developer::find($request->developer);
-            $developer->update($request->only(['id', 'title']));
-        
-            return response()->json(["result" => true, "message" => "Updated successfuly!"], 200);
+            $category = Category::find($request->category);
+            $category->update($request->only(['id', 'title']));
+            
+            return response()->json(["result" => true, "message" => "Updated successfully"], 200);
         }
 
         return response()->json(["result" => false, "message" => "Password is not correct"], 403);
@@ -48,9 +48,8 @@ class AdminkaDevController extends AdminkaController
     {
         if($request->password != null && $request->password == $this->password)
         {
-            Developer::find($request->developer)->delete();
-        
-            return response()->json(["result" => true, "message" => "Deleted successfuly!"], 200);
+            Category::find($request->category)->delete();
+            return response()->json(["result" => true, "message" => "Deleted successfully"], 200);
         }
 
         return response()->json(["result" => false, "message" => "Password is not correct"], 403);

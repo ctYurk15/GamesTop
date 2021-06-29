@@ -9,6 +9,8 @@ use App\Models\Game;
 class Category extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['id', 'title'];
     
     public function games()
     {
