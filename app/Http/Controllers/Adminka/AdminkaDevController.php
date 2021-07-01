@@ -22,37 +22,40 @@ class AdminkaDevController extends AdminkaController
 
     public function store(Request $request)
     {
-        if($request->password != null && $request->password == $this->password)
+        //validation checks
+        if(!$this->validatePassword($request))
         {
-            Developer::create(["title" => $request->title]);
-            return response()->json(["result" => true, "message" => "Created successfuly!"], 201);
+            return response()->json(["result" => false, "message" => "Password is not correct"], 403);
         }
 
-        return response()->json(["result" => false, "message" => "Password is not correct"], 403);
+        Developer::create(["title" => $request->title]);
+        return response()->json(["result" => true, "message" => "Created successfuly!"], 201);
     }
 
     public function update(Request $request)
     {
-        if($request->password != null && $request->password == $this->password)
+        //validation checks
+        if(!$this->validatePassword($request))
         {
-            $developer = Developer::find($request->developer);
-            $developer->update($request->only(['id', 'title']));
-        
-            return response()->json(["result" => true, "message" => "Updated successfuly!"], 200);
+            return response()->json(["result" => false, "message" => "Password is not correct"], 403);
         }
 
-        return response()->json(["result" => false, "message" => "Password is not correct"], 403);
+        $developer = Developer::find($request->developer);
+        $developer->update($request->only(['id', 'title']));
+    
+        return response()->json(["result" => true, "message" => "Updated successfuly!"], 200);
     }
 
     public function destroy(Request $request)
     {
-        if($request->password != null && $request->password == $this->password)
+        //validation checks
+        if(!$this->validatePassword($request))
         {
-            Developer::find($request->developer)->delete();
-        
-            return response()->json(["result" => true, "message" => "Deleted successfuly!"], 200);
+            return response()->json(["result" => false, "message" => "Password is not correct"], 403);
         }
 
-        return response()->json(["result" => false, "message" => "Password is not correct"], 403);
+        Developer::find($request->developer)->delete();
+        
+        return response()->json(["result" => true, "message" => "Deleted successfuly!"], 200);
     }
 }

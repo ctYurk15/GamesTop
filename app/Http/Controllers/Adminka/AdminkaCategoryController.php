@@ -22,36 +22,41 @@ class AdminkaCategoryController extends AdminkaController
 
     public function store(Request $request)
     {
-        if($request->password != null && $request->password == $this->password)
+        //validation checks
+        if(!$this->validatePassword($request))
         {
-            Category::create(["title" => $request->title]);
-            return response()->json(["result" => true, "message" => "Created successfully"], 201);
+            return response()->json(["result" => false, "message" => "Password is not correct"], 403);
         }
 
-        return response()->json(["result" => false, "message" => "Password is not correct"], 403);
+        Category::create(["title" => $request->title]);
+
+        return response()->json(["result" => true, "message" => "Created successfully"], 201);
     }
 
     public function update(Request $request)
     {
-        if($request->password != null && $request->password == $this->password)
+        //validation checks
+        if(!$this->validatePassword($request))
         {
-            $category = Category::find($request->category);
-            $category->update($request->only(['id', 'title']));
-            
-            return response()->json(["result" => true, "message" => "Updated successfully"], 200);
+            return response()->json(["result" => false, "message" => "Password is not correct"], 403);
         }
 
-        return response()->json(["result" => false, "message" => "Password is not correct"], 403);
+        $category = Category::find($request->category);
+        $category->update($request->only(['id', 'title']));
+        
+        return response()->json(["result" => true, "message" => "Updated successfully"], 200);
     }
 
     public function destroy(Request $request)
     {
-        if($request->password != null && $request->password == $this->password)
+        //validation checks
+        if(!$this->validatePassword($request))
         {
-            Category::find($request->category)->delete();
-            return response()->json(["result" => true, "message" => "Deleted successfully"], 200);
+            return response()->json(["result" => false, "message" => "Password is not correct"], 403);
         }
 
-        return response()->json(["result" => false, "message" => "Password is not correct"], 403);
+        Category::find($request->category)->delete();
+
+        return response()->json(["result" => true, "message" => "Deleted successfully"], 200);
     }
 }
