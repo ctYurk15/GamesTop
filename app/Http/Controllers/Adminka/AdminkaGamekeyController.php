@@ -4,27 +4,27 @@ namespace App\Http\Controllers\Adminka;
 
 use App\Http\Controllers\Adminka\AdminkaController;
 use Illuminate\Http\Request;
-use App\Models\Developer;
+use App\Models\Gamekey;
 
-class AdminkaDevController extends AdminkaController
+class AdminkaGamekeyController extends AdminkaController
 {
-    public function index(Request $request)
+    public function index()
     {
-        $developers = Developer::all();
-        return response()->json($developers, 200);
+        $gamekeys = Gamekey::all();
+        return response()->json($gamekeys, 200);
     }
 
     public function show(Request $request)
     {
-        $developer = Developer::find($request->developer);
+        $gamekey = Gamekey::find($request->gamekey);
 
-        //if developer with such id exists
-        if($developer != null)
+        //if gamekey with such id exists
+        if($gamekey != null)
         {
-            return response()->json($developer, 200);
+            return response()->json($gamekey, 200);
         }
 
-        return response()->json(["result" => false, "message" => "Not found developer with id {$request->developer}"], 404);
+        return response()->json(["result" => false, "message" => "Not found gamekey with id {$request->gamekey}"], 404);
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class AdminkaDevController extends AdminkaController
             return response()->json(["result" => false, "message" => "Password is not correct"], 403);
         }
 
-        Developer::create(["title" => $request->title]);
+        Gamekey::create($request->only(['id', 'game_id', 'code']));
         return response()->json(["result" => true, "message" => "Created successfuly!"], 201);
     }
 
@@ -47,18 +47,16 @@ class AdminkaDevController extends AdminkaController
             return response()->json(["result" => false, "message" => "Password is not correct"], 403);
         }
 
-        $developer = Developer::find($request->developer);
+        $gamekey = Gamekey::find($request->gamekey);
 
-        //if developer with such id exists
-        if($developer != null)
+        //if gamekey with such id exists
+        if($gamekey != null)
         {
-            $developer->update($request->only(['id', 'title']));
+            $gamekey->update($request->only(['id', 'game_id', 'code']));
             return response()->json(["result" => true, "message" => "Updated successfuly!"], 200);
         }
 
-        return response()->json(["result" => false, "message" => "Not found developer with id {$request->developer}"], 404);
-
-        
+        return response()->json(["result" => false, "message" => "Not found gamekey with id {$request->gamekey}"], 404);
     }
 
     public function destroy(Request $request)
@@ -69,15 +67,15 @@ class AdminkaDevController extends AdminkaController
             return response()->json(["result" => false, "message" => "Password is not correct"], 403);
         }
 
-        $developer = Developer::find($request->developer);
-
-        //if developer with such id exists
-        if($developer != null)
+        $gamekey = Gamekey::find($request->gamekey);
+        
+        //if gamekey with such id exists
+        if($gamekey != null)
         {
-            $developer->delete();
+            $gamekey->delete();
             return response()->json(["result" => true, "message" => "Deleted successfuly!"], 200);
         }
 
-        return response()->json(["result" => false, "message" => "Not found developer with id {$request->developer}"], 404);
+        return response()->json(["result" => false, "message" => "Not found gamekey with id {$request->gamekey}"], 404);
     }
 }

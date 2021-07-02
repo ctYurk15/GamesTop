@@ -17,7 +17,14 @@ class AdminkaCategoryController extends AdminkaController
     public function show(Request $request)
     {
         $category = Category::find($request->category);
-        return response()->json($category, 200);
+
+        //if category with such id exists
+        if($category != null)
+        {
+            return response()->json($category, 200);
+        }
+
+        return response()->json(["result" => false, "message" => "Not found category with id {$request->category}"], 404);
     }
 
     public function store(Request $request)
@@ -42,9 +49,15 @@ class AdminkaCategoryController extends AdminkaController
         }
 
         $category = Category::find($request->category);
-        $category->update($request->only(['id', 'title']));
-        
-        return response()->json(["result" => true, "message" => "Updated successfully"], 200);
+
+        //if category with such id exists
+        if($category != null)
+        {
+            $category->update($request->only(['id', 'title']));
+            return response()->json(["result" => true, "message" => "Updated successfully"], 200);
+        }
+
+        return response()->json(["result" => false, "message" => "Not found category with id {$request->category}"], 404);
     }
 
     public function destroy(Request $request)
@@ -55,8 +68,15 @@ class AdminkaCategoryController extends AdminkaController
             return response()->json(["result" => false, "message" => "Password is not correct"], 403);
         }
 
-        Category::find($request->category)->delete();
+        $category = Category::find($request->category);
 
-        return response()->json(["result" => true, "message" => "Deleted successfully"], 200);
+        //if category with such id exists
+        if($category != null)
+        {
+            $category->delete();
+            return response()->json(["result" => true, "message" => "Deleted successfully"], 200);
+        }
+
+        return response()->json(["result" => false, "message" => "Not found category with id {$request->category}"], 404);
     }
 }
