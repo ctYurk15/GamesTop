@@ -23,4 +23,5 @@ Route::resource('/developers', 'App\Http\Controllers\Adminka\AdminkaDevControlle
 Route::resource('/categories', 'App\Http\Controllers\Adminka\AdminkaCategoryController');
 Route::resource('/gamekeys', 'App\Http\Controllers\Adminka\AdminkaGamekeyController');
 Route::resource('/comments', 'App\Http\Controllers\Adminka\AdminkaCommentsController');
+Route::resource('/orders', 'App\Http\Controllers\Adminka\AdminkaOrderController');
 
