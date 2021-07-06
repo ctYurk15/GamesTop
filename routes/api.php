@@ -24,4 +24,8 @@ Route::resource('/categories', 'App\Http\Controllers\Adminka\AdminkaCategoryCont
 Route::resource('/gamekeys', 'App\Http\Controllers\Adminka\AdminkaGamekeyController');
 Route::resource('/comments', 'App\Http\Controllers\Adminka\AdminkaCommentsController');
 Route::resource('/orders', 'App\Http\Controllers\Adminka\AdminkaOrderController');
+Route::resource('/achievments', 'App\Http\Controllers\Adminka\AdminkaAchievmentController');
+Route::resource('/achievment-user', 'App\Http\Controllers\Adminka\AdminkaAchievmentUserController');
+Route::resource('/category-game', 'App\Http\Controllers\Adminka\AdminkaCategoryGameController');
+Route::resource('/gallery-image', 'App\Http\Controllers\Adminka\AdminkaGalleryImageController');
 

@@ -9,5 +9,5 @@ class Achievment_User extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['user_id', 'achievment_id'];
+    protected $fillable = ['id', 'user_id', 'achievment_id'];
 }
