@@ -4,27 +4,27 @@ namespace App\Http\Controllers\Adminka;
 
 use App\Http\Controllers\Adminka\AdminkaController;
 use Illuminate\Http\Request;
-use App\Models\GalleryImage;
+use App\Models\Game;
 
-class AdminkaGalleryImageController extends AdminkaController
+class AdminkaGameController extends AdminkaController
 {
     public function index()
     {
-        $gallery_image = GalleryImage::all();
-        return response()->json($gallery_image, 200);
+        $games = Game::all();
+        return response()->json($games, 200);
     }
 
     public function show(Request $request)
     {
-        $gallery_image = GalleryImage::find($request->gallery_image);
+        $game = Game::find($request->game);
 
-        //if gallery_image with such id exists
-        if($gallery_image != null)
+        //if game with such id exists
+        if($game != null)
         {
-            return response()->json($gallery_image, 200);
+            return response()->json($game, 200);
         }
 
-        return response()->json(["result" => false, "message" => "Not found gallery_image with id {$request->gallery_image}"], 404);
+        return response()->json(["result" => false, "message" => "Not found game with id {$request->game}"], 404);
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class AdminkaGalleryImageController extends AdminkaController
             return response()->json(["result" => false, "message" => "Password is not correct"], 403);
         }
 
-        GalleryImage::create($request->except('password'));
+        Game::create($request->except('password'));
         return response()->json(["result" => true, "message" => "Created successfuly!"], 201);
     }
 
@@ -47,16 +47,16 @@ class AdminkaGalleryImageController extends AdminkaController
             return response()->json(["result" => false, "message" => "Password is not correct"], 403);
         }
 
-        $gallery_image = GalleryImage::find($request->gallery_image);
+        $game = Game::find($request->game);
 
-        //if gallery_image with such id exists
-        if($gallery_image != null)
+        //if game with such id exists
+        if($game != null)
         {
-            $gallery_image->update($request->except('password'));
+            $game->update($request->except('password'));
             return response()->json(["result" => true, "message" => "Updated successfuly!"], 200);
         }
 
-        return response()->json(["result" => false, "message" => "Not found gallery_image with id {$request->gallery_image}"], 404);
+        return response()->json(["result" => false, "message" => "Not found game with id {$request->game}"], 404);
 
         
     }
@@ -69,15 +69,15 @@ class AdminkaGalleryImageController extends AdminkaController
             return response()->json(["result" => false, "message" => "Password is not correct"], 403);
         }
 
-        $gallery_image = GalleryImage::find($request->gallery_image);
+        $game = Game::find($request->game);
 
-        //if gallery_image with such id exists
-        if($gallery_image != null)
+        //if game with such id exists
+        if($game != null)
         {
-            $gallery_image->delete();
+            $game->delete();
             return response()->json(["result" => true, "message" => "Deleted successfuly!"], 200);
         }
 
-        return response()->json(["result" => false, "message" => "Not found gallery_image with id {$request->gallery_image}"], 404);
+        return response()->json(["result" => false, "message" => "Not found game with id {$request->game}"], 404);
     }
 }

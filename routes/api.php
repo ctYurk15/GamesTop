@@ -28,4 +28,5 @@ Route::resource('/achievments', 'App\Http\Controllers\Adminka\AdminkaAchievmentC
 Route::resource('/achievment-user', 'App\Http\Controllers\Adminka\AdminkaAchievmentUserController');
 Route::resource('/category-game', 'App\Http\Controllers\Adminka\AdminkaCategoryGameController');
 Route::resource('/gallery-image', 'App\Http\Controllers\Adminka\AdminkaGalleryImageController');
+Route::resource('/games', 'App\Http\Controllers\Adminka\AdminkaGameController');
 
