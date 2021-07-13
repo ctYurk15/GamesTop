@@ -12,11 +12,13 @@ It has the following functionality:
 1. You`re purchasing real keys from database, if there is not enough keys, system will warn you
 1. After purchase you`ll receive mail with gamekeys you bought
 1. Full AJAX cover of the main functionality
+1. REST API access for most of the tables + images upload/delete ONLY when a password is set
 
 # Technologies
 Technologies stack used here:
 1. Front-end: HTML/CSS/JS/JQuery, a bit bootstrap
 1. Back-end: Laravel 
+1. API: REST API
 1. Databases: MySQL + phpMyAdmin
 1. Code editor: Brackets
 1. Methodology: Agile

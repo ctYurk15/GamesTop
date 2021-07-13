@@ -30,3 +30,5 @@ Route::resource('/category-game', 'App\Http\Controllers\Adminka\AdminkaCategoryG
 Route::resource('/gallery-image', 'App\Http\Controllers\Adminka\AdminkaGalleryImageController');
 Route::resource('/games', 'App\Http\Controllers\Adminka\AdminkaGameController');
 
+Route::resource('/images', 'App\Http\Controllers\Adminka\AdminkaImagesController')->only(['store', 'destroy']);
+
